@@ -1,3 +1,48 @@
-baseURL = 'http://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+baseURL = "https://gamgam330.github.io/"
+languageCode = "ko-kr"
+title = "gamgam's blog"
+theme = "triplemode"
+
+disablePathToLower = "true"
+
+[params]
+favicon = "img/favicon.ico"
+description = "gamgam's blog"
+disqus_shortname = ""
+google_analytics = ""
+
+str_next_post = "Next post"
+str_previous_post = "Previous post"
+str_next_page = "Next"
+str_previous_page = "Prev"
+
+[taxonomies]
+    category = "categories"
+    tag = "tags"
+    subcategory = "subcategories"
+
+[permalinks]
+  development = "/:sections/:year/:month/:day/:filename.html"
+
+[markup]
+  [markup.highlight]
+    anchorLineNos = false
+    codeFences = true
+    guessSyntax = false
+    hl_Lines = ""
+    lineAnchors = ""
+    lineNoStart = 1
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = true
+    style = "dracula"
+    tabWidth = 4
+
+	[params.footer]
+		enable=true
+		copyright = "gamgam"
+
+    [[params.footer.social]]
+		icon = "fa-github"
+		url= "https://github.com/gamgam330"
+		label = "GitHub"
