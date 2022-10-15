@@ -22,7 +22,7 @@ str_previous_page = "Prev"
     subcategory = "subcategories"
 
 [permalinks]
-  development = "/:sections/:year/:month/:day/:filename.html"
+  study = "/:sections/:year/:month/:day/:filename.html"
 
 [markup]
   [markup.highlight]
