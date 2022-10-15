@@ -1,7 +1,13 @@
-# 백준 24445 DFS
+---
+title: "백준 24445 BFS"
+date: 2022-10-15
+draft: false
+category: [study]
+subcategories: [baekjoon]
+tags: [Algorithm, Baekjoon]
+---
 
-
-![문제](%EB%B0%B1%EC%A4%8024445.png)
+![문제](./img/백준24445.png)
 
 24445번 문제에 중의사항은 <mark>내림차순</mark>인것같다. 나는 내림차순을 생각하기 않고 풀다가 한번 틀렸다.
 
@@ -9,7 +15,7 @@ BFS에서 중요한 개념은 <mark>큐</mark>와 <mark>그래프</mark>이다.
 
 우선 내가 구현한 코드부터 살펴보겠다.
 
-```
+```java
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -65,7 +71,7 @@ public class 백준24445 {
 		}
 		for(int i = 1 ; i <= N; i++) { 
 			System.out.println(result[i]);
-		}
+	}
 	}
 }
 ```
@@ -84,11 +90,11 @@ for(int i = 1; i <= N; i++){
 
 백준 예제입력으로 2차원 배열안에 연결된 정점에 대해 살펴보겠다.
 
-![1](1.png)
-![2](2.png)
-![3](3.png)
-![4](4.png)
-![5](5.png)
+![1](./img/1.png)
+![2](./img/2.png)
+![3](./img/3.png)
+![4](./img/4.png)
+![5](./img/5.png)
 
 이렇게 순서대로 양방향에 간선이 생기는걸 확인 할 수 있다.
 
