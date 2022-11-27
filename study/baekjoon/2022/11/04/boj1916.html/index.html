@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
+
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+
+    <base href="https://gamgam330.github.io/">
+    <title> gamgam&#39;s blog </title>
+    <meta name="description" content="gamgam&#39;s blog">
+
+    <link rel="canonical" href="https://gamgam330.github.io/study/baekjoon/2022/11/04/boj1916.html/">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+
+    
+    <link rel="stylesheet" href="https://gamgam330.github.io/sass/main.min.8d58f9ab31818c91abecff2fde5e87e083101edf00fb76a93740014a66d8e666.css">
+
+    <link rel="shortcut icon" href="https://gamgam330.github.io/img/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+    <script>
+        $(function () {
+            $(".cat1>li").click(function () {
+                $(this).siblings().find('ul').slideUp(300);
+                $(this).find('ul').slideToggle(300);
+            })
+
+            $(window).scroll(function () {
+                activeBg();
+            });
+
+            activeBg();
+
+
+            $('.h-menu').click(function (e) {
+                e.preventDefault();
+                $('.side').addClass('on');
+            });
+
+            $('.close').click(function (e) {
+                e.preventDefault();
+                $('.side').removeClass('on');
+            });
+
+            $('ul.slide>li').click(function () {
+                if ($(this).find('.down').hasClass('on')) {
+                    $(this).find('.down').removeClass('on');
+                    $(this).find('.down').prev().stop().slideUp(500);
+                } else {
+                    $(this).find('.down').addClass('on');
+                    $(this).find('.down').prev().stop().slideDown(500);
+                }
+            })
+        })
+
+        function activeBg() {
+            if ($(window).scrollTop() > 0) {
+                $('.site-header').addClass('on');
+            } else {
+                $('.site-header').removeClass('on');
+            }
+        }
+    </script>
+</head>
+<header class="site-header">
+    <h1 class="web-t" onclick="window.location.href='/'"><span>public static</span><em> 천방지축 얼렁뚱땅
+        </em><span>(</span><i>🤣</i><span>)</span>:<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="nbsp">title =</span> 빙글빙글 돌아가는 구만이의 개발일지
+        <br />
+    </h1>
+
+    <h1 class="mob-t" onclick="window.location.href='/'">
+        <span>천/얼/빙/돌(</span><i>🤣</i><span>)</span>
+        <br />구만이의 개발일지
+    </h1>
+
+    <nav>
+        <div class="h-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="side">
+            <div class="close">
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="slide">
+                <li class="on"><a href="#">All Post</a>
+                </li>
+                <li><a>Study</a>
+                    <ul>
+                        <li><a href="https://gamgam330.github.io//study/baekjoon">Baekjoon</a></li>
+                    </ul>
+                    <span class="down"></span>
+                </li>
+                <hr />
+                <li><a href="https://gamgam330.github.io//about">About</a></li>
+                <li><a href="https://gamgam330.github.io//archive">Archive</a></li>
+                <li><a href="https://gamgam330.github.io//tags">Tag</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+<body>
+    <div class="content">
+        
+        
+
+<article>
+    <header>
+        <h1 class="title">BOJ 1916</h1>
+        <p class="meta">
+            2022-11-04
+        </p>
+    </header>
+    <section class="post-content"><p>백준 1916번 문제는 다익스트라 문제로 <code>너비우선탐색</code> 과 <code>우선순위 큐</code> 개념을 알지못한다면 이 두가지 개념을 먼저 정리하고 오는것을 추천한다.</p>
+<p><img src="/images/study/baekjoon/1916/11.PNG" alt=""></p>
+<p>아래는 내가짠 코드이다.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">71
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">72
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">73
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">74
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">75
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">76
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">77
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">78
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">79
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#ff79c6">package</span> 백준<span style="color:#ff79c6">;</span>
+
+<span style="color:#ff79c6">import</span> java.io.BufferedReader<span style="color:#ff79c6">;</span>
+<span style="color:#ff79c6">import</span> java.io.IOException<span style="color:#ff79c6">;</span>
+<span style="color:#ff79c6">import</span> java.io.InputStreamReader<span style="color:#ff79c6">;</span>
+<span style="color:#ff79c6">import</span> java.util.ArrayList<span style="color:#ff79c6">;</span>
+<span style="color:#ff79c6">import</span> java.util.Arrays<span style="color:#ff79c6">;</span>
+<span style="color:#ff79c6">import</span> java.util.PriorityQueue<span style="color:#ff79c6">;</span>
+<span style="color:#ff79c6">import</span> java.util.StringTokenizer<span style="color:#ff79c6">;</span>
+
+<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">BOJ1916</span> <span style="color:#ff79c6">{</span>
+	<span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">boolean</span><span style="color:#ff79c6">[]</span> visited<span style="color:#ff79c6">;</span>
+	<span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">int</span> N<span style="color:#ff79c6">,</span> M<span style="color:#ff79c6">;</span>
+	<span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">int</span><span style="color:#ff79c6">[]</span> dist<span style="color:#ff79c6">;</span>
+	<span style="color:#8be9fd;font-style:italic">static</span> ArrayList<span style="color:#ff79c6">&lt;</span>ArrayList<span style="color:#ff79c6">&lt;</span>Node<span style="color:#ff79c6">&gt;&gt;</span> graph <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> ArrayList<span style="color:#ff79c6">&lt;&gt;();</span>
+	<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">main</span><span style="color:#ff79c6">(</span>String<span style="color:#ff79c6">[]</span> args<span style="color:#ff79c6">)</span> <span style="color:#8be9fd;font-style:italic">throws</span> IOException<span style="color:#ff79c6">{</span>
+		BufferedReader br <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> BufferedReader<span style="color:#ff79c6">(</span><span style="color:#ff79c6">new</span> InputStreamReader<span style="color:#ff79c6">(</span>System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">in</span><span style="color:#ff79c6">));</span>
+		N <span style="color:#ff79c6">=</span> Integer<span style="color:#ff79c6">.</span><span style="color:#50fa7b">parseInt</span><span style="color:#ff79c6">(</span>br<span style="color:#ff79c6">.</span><span style="color:#50fa7b">readLine</span><span style="color:#ff79c6">());</span>		<span style="color:#6272a4">//도시의 수
+</span><span style="color:#6272a4"></span>		M <span style="color:#ff79c6">=</span> Integer<span style="color:#ff79c6">.</span><span style="color:#50fa7b">parseInt</span><span style="color:#ff79c6">(</span>br<span style="color:#ff79c6">.</span><span style="color:#50fa7b">readLine</span><span style="color:#ff79c6">());</span>		<span style="color:#6272a4">//버스의 수
+</span><span style="color:#6272a4"></span>		StringTokenizer st<span style="color:#ff79c6">;</span>
+		visited <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> <span style="color:#8be9fd">boolean</span><span style="color:#ff79c6">[</span>N<span style="color:#ff79c6">+</span>1<span style="color:#ff79c6">];</span>
+		dist <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> <span style="color:#8be9fd">int</span><span style="color:#ff79c6">[</span>N<span style="color:#ff79c6">+</span>1<span style="color:#ff79c6">];</span>
+		<span style="color:#ff79c6">for</span><span style="color:#ff79c6">(</span><span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> 0<span style="color:#ff79c6">;</span> i <span style="color:#ff79c6">&lt;=</span> N<span style="color:#ff79c6">;</span> i<span style="color:#ff79c6">++)</span> <span style="color:#ff79c6">{</span>
+			graph<span style="color:#ff79c6">.</span><span style="color:#50fa7b">add</span><span style="color:#ff79c6">(</span><span style="color:#ff79c6">new</span> ArrayList<span style="color:#ff79c6">&lt;&gt;());</span>
+		<span style="color:#ff79c6">}</span>
+		<span style="color:#ff79c6">for</span><span style="color:#ff79c6">(</span><span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> 0<span style="color:#ff79c6">;</span> i <span style="color:#ff79c6">&lt;</span> M<span style="color:#ff79c6">;</span> i<span style="color:#ff79c6">++)</span> <span style="color:#ff79c6">{</span>
+			st <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> StringTokenizer<span style="color:#ff79c6">(</span>br<span style="color:#ff79c6">.</span><span style="color:#50fa7b">readLine</span><span style="color:#ff79c6">());</span>
+			<span style="color:#8be9fd">int</span> from <span style="color:#ff79c6">=</span> Integer<span style="color:#ff79c6">.</span><span style="color:#50fa7b">parseInt</span><span style="color:#ff79c6">(</span>st<span style="color:#ff79c6">.</span><span style="color:#50fa7b">nextToken</span><span style="color:#ff79c6">());</span>
+			<span style="color:#8be9fd">int</span> to <span style="color:#ff79c6">=</span> Integer<span style="color:#ff79c6">.</span><span style="color:#50fa7b">parseInt</span><span style="color:#ff79c6">(</span>st<span style="color:#ff79c6">.</span><span style="color:#50fa7b">nextToken</span><span style="color:#ff79c6">());</span>
+			<span style="color:#8be9fd">int</span> money <span style="color:#ff79c6">=</span> Integer<span style="color:#ff79c6">.</span><span style="color:#50fa7b">parseInt</span><span style="color:#ff79c6">(</span>st<span style="color:#ff79c6">.</span><span style="color:#50fa7b">nextToken</span><span style="color:#ff79c6">());</span>
+			graph<span style="color:#ff79c6">.</span><span style="color:#50fa7b">get</span><span style="color:#ff79c6">(</span>from<span style="color:#ff79c6">).</span><span style="color:#50fa7b">add</span><span style="color:#ff79c6">(</span><span style="color:#ff79c6">new</span> Node<span style="color:#ff79c6">(</span>to<span style="color:#ff79c6">,</span> money<span style="color:#ff79c6">));</span>
+		<span style="color:#ff79c6">}</span>
+		
+		st <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> StringTokenizer<span style="color:#ff79c6">(</span>br<span style="color:#ff79c6">.</span><span style="color:#50fa7b">readLine</span><span style="color:#ff79c6">());</span>
+		
+		<span style="color:#8be9fd">int</span> startPoint <span style="color:#ff79c6">=</span> Integer<span style="color:#ff79c6">.</span><span style="color:#50fa7b">parseInt</span><span style="color:#ff79c6">(</span>st<span style="color:#ff79c6">.</span><span style="color:#50fa7b">nextToken</span><span style="color:#ff79c6">());</span>
+		<span style="color:#8be9fd">int</span> endPoint <span style="color:#ff79c6">=</span> Integer<span style="color:#ff79c6">.</span><span style="color:#50fa7b">parseInt</span><span style="color:#ff79c6">(</span>st<span style="color:#ff79c6">.</span><span style="color:#50fa7b">nextToken</span><span style="color:#ff79c6">());</span>
+		
+		Arrays<span style="color:#ff79c6">.</span><span style="color:#50fa7b">fill</span><span style="color:#ff79c6">(</span>dist<span style="color:#ff79c6">,</span> Integer<span style="color:#ff79c6">.</span><span style="color:#50fa7b">MAX_VALUE</span> <span style="color:#ff79c6">-</span> 1<span style="color:#ff79c6">);</span>
+		
+		dijkstra<span style="color:#ff79c6">(</span>startPoint<span style="color:#ff79c6">,</span> endPoint<span style="color:#ff79c6">);</span>
+		System<span style="color:#ff79c6">.</span><span style="color:#50fa7b">out</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">print</span><span style="color:#ff79c6">(</span>dist<span style="color:#ff79c6">[</span>endPoint<span style="color:#ff79c6">]);</span>
+	<span style="color:#ff79c6">}</span>
+	
+	<span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd">void</span> <span style="color:#50fa7b">dijkstra</span><span style="color:#ff79c6">(</span><span style="color:#8be9fd">int</span> start<span style="color:#ff79c6">,</span> <span style="color:#8be9fd">int</span> end<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+		PriorityQueue<span style="color:#ff79c6">&lt;</span>Node<span style="color:#ff79c6">&gt;</span> pq <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> PriorityQueue<span style="color:#ff79c6">&lt;&gt;();</span>
+		pq<span style="color:#ff79c6">.</span><span style="color:#50fa7b">offer</span><span style="color:#ff79c6">(</span><span style="color:#ff79c6">new</span> Node<span style="color:#ff79c6">(</span>start<span style="color:#ff79c6">,</span> 0<span style="color:#ff79c6">));</span>
+		dist<span style="color:#ff79c6">[</span>start<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">=</span> 0<span style="color:#ff79c6">;</span>
+		
+		<span style="color:#ff79c6">while</span><span style="color:#ff79c6">(!</span>pq<span style="color:#ff79c6">.</span><span style="color:#50fa7b">isEmpty</span><span style="color:#ff79c6">())</span> <span style="color:#ff79c6">{</span>
+			Node node <span style="color:#ff79c6">=</span> pq<span style="color:#ff79c6">.</span><span style="color:#50fa7b">poll</span><span style="color:#ff79c6">();</span>
+			<span style="color:#8be9fd">int</span> nodePoint <span style="color:#ff79c6">=</span> node<span style="color:#ff79c6">.</span><span style="color:#50fa7b">end</span><span style="color:#ff79c6">;</span>
+			
+			<span style="color:#ff79c6">if</span><span style="color:#ff79c6">(</span>visited<span style="color:#ff79c6">[</span>nodePoint<span style="color:#ff79c6">])</span> <span style="color:#ff79c6">continue</span><span style="color:#ff79c6">;</span>
+			visited<span style="color:#ff79c6">[</span>nodePoint<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">true</span><span style="color:#ff79c6">;</span>
+			
+			<span style="color:#ff79c6">for</span><span style="color:#ff79c6">(</span>Node temp <span style="color:#ff79c6">:</span> graph<span style="color:#ff79c6">.</span><span style="color:#50fa7b">get</span><span style="color:#ff79c6">(</span>nodePoint<span style="color:#ff79c6">))</span> <span style="color:#ff79c6">{</span>
+				<span style="color:#ff79c6">if</span><span style="color:#ff79c6">(</span>dist<span style="color:#ff79c6">[</span>nodePoint<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">+</span> temp<span style="color:#ff79c6">.</span><span style="color:#50fa7b">cost</span> <span style="color:#ff79c6">&lt;</span> dist<span style="color:#ff79c6">[</span>temp<span style="color:#ff79c6">.</span><span style="color:#50fa7b">end</span><span style="color:#ff79c6">])</span> <span style="color:#ff79c6">{</span>
+					dist<span style="color:#ff79c6">[</span>temp<span style="color:#ff79c6">.</span><span style="color:#50fa7b">end</span><span style="color:#ff79c6">]</span> <span style="color:#ff79c6">=</span> dist<span style="color:#ff79c6">[</span>nodePoint<span style="color:#ff79c6">]</span> <span style="color:#ff79c6">+</span> temp<span style="color:#ff79c6">.</span><span style="color:#50fa7b">cost</span><span style="color:#ff79c6">;</span>
+					pq<span style="color:#ff79c6">.</span><span style="color:#50fa7b">offer</span><span style="color:#ff79c6">(</span><span style="color:#ff79c6">new</span> Node<span style="color:#ff79c6">(</span>temp<span style="color:#ff79c6">.</span><span style="color:#50fa7b">end</span><span style="color:#ff79c6">,</span> dist<span style="color:#ff79c6">[</span>temp<span style="color:#ff79c6">.</span><span style="color:#50fa7b">end</span><span style="color:#ff79c6">]));</span>
+				<span style="color:#ff79c6">}</span>
+			<span style="color:#ff79c6">}</span>
+			
+		<span style="color:#ff79c6">}</span>
+	<span style="color:#ff79c6">}</span>
+	<span style="color:#8be9fd;font-style:italic">static</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">Node</span> <span style="color:#8be9fd;font-style:italic">implements</span> Comparable<span style="color:#ff79c6">&lt;</span>Node<span style="color:#ff79c6">&gt;{</span>
+		<span style="color:#8be9fd">int</span> end<span style="color:#ff79c6">,</span> cost<span style="color:#ff79c6">;</span>
+		
+		Node<span style="color:#ff79c6">(</span><span style="color:#8be9fd">int</span> end<span style="color:#ff79c6">,</span> <span style="color:#8be9fd">int</span> cost<span style="color:#ff79c6">){</span>
+			<span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">end</span> <span style="color:#ff79c6">=</span> end<span style="color:#ff79c6">;</span>
+			<span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">cost</span> <span style="color:#ff79c6">=</span> cost<span style="color:#ff79c6">;</span>
+		<span style="color:#ff79c6">}</span>
+		
+		@Override
+		<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">compareTo</span><span style="color:#ff79c6">(</span>Node o<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+			<span style="color:#ff79c6">return</span> <span style="color:#ff79c6">this</span><span style="color:#ff79c6">.</span><span style="color:#50fa7b">cost</span> <span style="color:#ff79c6">-</span> o<span style="color:#ff79c6">.</span><span style="color:#50fa7b">cost</span><span style="color:#ff79c6">;</span>
+		<span style="color:#ff79c6">}</span>
+	<span style="color:#ff79c6">}</span>
+<span style="color:#ff79c6">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>동아리 활동중 이미 다익스트라 알고리즘에 대한 학습 후 문제를 풀기 시작했는데도 막상 풀려고 맞닥뜨리니 머리가 멈추었다.</p>
+<p>그래도 차근차근 그림을 그려 문제를 풀려고 노력하다보니 문제가 차근차근 풀리기 시작했다.</p>
+<p>우선 필요정보에 대해 정리해보겠다.</p>
+<p>가장 중요한 그래프, 방문의 유무, 최소비용 정도로 생각할 수 있을것같다. N과 M같은 변수들은 다른 문제에서도 동일하게 사용되기때문에 굳이 언급하진 않겠다.</p>
+<p>그래프 모양부터 살펴보겠다.</p>
+<p><img src="/images/study/baekjoon/1916/22.PNG" alt="1"></p>
+<p>방향 그래프로 위 사진처럼 연결이 되는것을 알 수 있다.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#ff79c6">for</span><span style="color:#ff79c6">(</span><span style="color:#8be9fd">int</span> i <span style="color:#ff79c6">=</span> 0<span style="color:#ff79c6">;</span> i <span style="color:#ff79c6">&lt;</span> M<span style="color:#ff79c6">;</span> i<span style="color:#ff79c6">++)</span> <span style="color:#ff79c6">{</span>
+			st <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> StringTokenizer<span style="color:#ff79c6">(</span>br<span style="color:#ff79c6">.</span><span style="color:#50fa7b">readLine</span><span style="color:#ff79c6">());</span>
+			<span style="color:#8be9fd">int</span> from <span style="color:#ff79c6">=</span> Integer<span style="color:#ff79c6">.</span><span style="color:#50fa7b">parseInt</span><span style="color:#ff79c6">(</span>st<span style="color:#ff79c6">.</span><span style="color:#50fa7b">nextToken</span><span style="color:#ff79c6">());</span>
+			<span style="color:#8be9fd">int</span> to <span style="color:#ff79c6">=</span> Integer<span style="color:#ff79c6">.</span><span style="color:#50fa7b">parseInt</span><span style="color:#ff79c6">(</span>st<span style="color:#ff79c6">.</span><span style="color:#50fa7b">nextToken</span><span style="color:#ff79c6">());</span>
+			<span style="color:#8be9fd">int</span> money <span style="color:#ff79c6">=</span> Integer<span style="color:#ff79c6">.</span><span style="color:#50fa7b">parseInt</span><span style="color:#ff79c6">(</span>st<span style="color:#ff79c6">.</span><span style="color:#50fa7b">nextToken</span><span style="color:#ff79c6">());</span>
+			graph<span style="color:#ff79c6">.</span><span style="color:#50fa7b">get</span><span style="color:#ff79c6">(</span>from<span style="color:#ff79c6">).</span><span style="color:#50fa7b">add</span><span style="color:#ff79c6">(</span><span style="color:#ff79c6">new</span> Node<span style="color:#ff79c6">(</span>to<span style="color:#ff79c6">,</span> money<span style="color:#ff79c6">));</span>
+		<span style="color:#ff79c6">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>이 코드를 이용해 2차원 배열에 저장하면</p>
+<p><img src="/images/study/baekjoon/1916/33.PNG" alt="2"></p>
+<p>위의사진처럼 배열에 저장이 된다. 내코드에선 class Node를 사용해 2차원 배열안에 도착정점의 번호와 비용을 저장해 주었다.
+여기서 중요한건 최소비용을 찾기위한 문제이기 때문에 각 노드의 최소비용을 저장한 dist 배열에는 모두 가장 큰값이 들어가 있어야한다.</p>
+<p>여기까지가 기본 정보를 저장하는 부분이였고 이다음 내용부터 다익스트라 알고리즘에 해당하는 내용이다.</p>
+<p>다익스트라 알고리즘의 너비우선탐색과 동일하게 시작정점과 연결된 모든 정점을 훑어보면서 시작된다. 시작정점인 1번 정점은 자기 자신이기때문에 비용을 0으로 설정해도된다. 그래서 1번 정점의 dist를 0으로 설정하고 우선순위 큐에 넣어주었다.
+우선순위 큐를 사용하는 이유는 매우 간단하다. dist에 저장되는 값은 시작정점에서부터 그 정점까지 가는데 드는 최소 비용을 얘기한다. 우선순위 큐를 이용해 그 정점를 가는데에 가장 작은 비용을 위주로 먼저 훑어보면 그 정점을 가는데에 비용이 더큰 간선은 거치지 않아도된다.</p>
+<p>기본적인 알고리즘이 1-&gt;2 / 1-&gt;3 / 1-&gt;4 / 1-&gt;5로 연결된 간선을 모두 확인하고 각 2, 3, 4, 5 정점에 연결된 간선중 비용이 가장 작은간선부터 확인하면된다. 예를들어 1정점에서 4정점을 간다고 했을때 1 -&gt; 4를 거쳐가면 비용이 1이지만 1 -&gt; 2 -&gt; 4를 거쳐가게되면 비용이 4로 더 커지는걸 확인할수있다. 그래서 2 -&gt; 4로가는 간선은 최소비용이 아니기때문에 더이상 쓸모없는 값이 되어버린다.</p>
+<p>이걸 이렇게 구체적으로 설명한 이유는 우선순위 큐를 사용하는 이유는 무엇이며, 1 -&gt; 4간선을 이어버리면 visited변수가 ture로 변경돼 2-&gt;4 간선은 확인 못하지 않나? 라는 질문때문이다. 더 값이 싼 비용으로 갈수있는 간선을 확인하고 굳이 더 비싸게 가야하는 간선은 보지않아도 된다는 소리이다.</p>
+<p>이렇게 1 정점에서 5정점을 가는방법으로는 1 -&gt; 2 -&gt; 4-&gt; 3 / 1 -&gt; 3 -&gt; 4-&gt; 5 / 1 -&gt; 5 / 1 -&gt; 4 -&gt; 5 등의 방법이 있지만 1을 거쳐 4를거쳐 5를가는 방법이 가장 비용이 싸기때문에 이렇게 진행해야한다.</p></section>
+    <footer>
+    <div class="tags">
+        
+        <a href="https://gamgam330.github.io//tags#Algorithm">#Algorithm</a>
+        
+        <a href="https://gamgam330.github.io//tags#Baekjoon">#Baekjoon</a>
+        
+    </div>
+</footer>
+</article>
+
+<div class="comments">
+ 
+</div>
+
+<div id="post-nav">
+    <div id="previous-post" class="post-nav-post">
+        
+        <p>Previous post</p>
+        <a href="https://gamgam330.github.io/study/baekjoon/2022/10/15/boj24445.html/">백준 24445 BFS</a>
+        
+    </div>
+
+    <div id="next-post" class="post-nav-post">
+        
+        <p>Next post</p>
+        <a href="https://gamgam330.github.io/study/baekjoon/2022/11/13/boj1647.html/">BOJ 1647</a>
+        
+    </div>
+</div>
+
+
+    </div>
+    <ul class='social'>
+    
+    <li>
+        <a href="https://github.com/gamgam330" class="icon alt" target="_blank">
+            <i class="fa fa-github fa-2x"></i>
+        </a>
+    </li>
+    
+</ul>
+<footer class="site-footer">
+    <p ckass="text">Powered by <a href="https://mingzz1.github.io" target="_blank">mingzzi</a> with <a
+            href="https://skye3133.github.io/" target="_blank">myund</a> and <a href="https://gamgam330.github.io/" target="_blank">90000e</a></p>
+</footer>
+
+
+    
+</body>
+</body>
+
+</html>

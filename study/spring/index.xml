@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Study/Spring on gamgam&#39;s blog</title>
+    <link>https://gamgam330.github.io/study/spring/</link>
+    <description>Recent content in Study/Spring on gamgam&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 27 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://gamgam330.github.io/study/spring/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spring 객체지향과 SOLID</title>
+      <link>https://gamgam330.github.io/study/spring/2022/11/27/spring1.html/</link>
+      <pubDate>Sun, 27 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://gamgam330.github.io/study/spring/2022/11/27/spring1.html/</guid>
+      <description>&lt;p&gt;자바를 기반으로한 spring 프레임워크는 &lt;code&gt;객체지향이라&lt;/code&gt;는 가장 큰 장점을 가지고 있다.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

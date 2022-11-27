@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Baekjoon on gamgam&#39;s blog</title>
+    <link>https://gamgam330.github.io/tags/Baekjoon/</link>
+    <description>Recent content in Baekjoon on gamgam&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Sun, 13 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://gamgam330.github.io/tags/Baekjoon/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>BOJ 1647</title>
+      <link>https://gamgam330.github.io/study/baekjoon/2022/11/13/boj1647.html/</link>
+      <pubDate>Sun, 13 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://gamgam330.github.io/study/baekjoon/2022/11/13/boj1647.html/</guid>
+      <description>&lt;p&gt;백준 1647문제를 풀기 위해선 &lt;code&gt;크루스칼 알고리즘&lt;/code&gt; / &lt;code&gt;union-find 알고리즘&lt;/code&gt; / &lt;code&gt;BFS&lt;/code&gt;, &lt;code&gt;DFS&lt;/code&gt; 알고리즘에 대해 알아야 한다&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>BOJ 1916</title>
+      <link>https://gamgam330.github.io/study/baekjoon/2022/11/04/boj1916.html/</link>
+      <pubDate>Fri, 04 Nov 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://gamgam330.github.io/study/baekjoon/2022/11/04/boj1916.html/</guid>
+      <description>&lt;p&gt;백준 1916번 문제는 다익스트라 문제로 &lt;code&gt;너비우선탐색&lt;/code&gt; 과 &lt;code&gt;우선순위 큐&lt;/code&gt; 개념을 알지못한다면 이 두가지 개념을 먼저 정리하고 오는것을 추천한다.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>백준 24445 BFS</title>
+      <link>https://gamgam330.github.io/study/baekjoon/2022/10/15/boj24445.html/</link>
+      <pubDate>Sat, 15 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://gamgam330.github.io/study/baekjoon/2022/10/15/boj24445.html/</guid>
+      <description>&lt;p&gt;24445번 문제에 주의사항은 &lt;code&gt;내림차순&lt;/code&gt;인것같다. 나는 내림차순을 생각하지 않고 풀다가 한번 틀렸다.&lt;br&gt;
+BFS에서 중요한 개념은 &lt;code&gt;큐&lt;/code&gt;와 &lt;code&gt;그래프&lt;/code&gt;이다.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

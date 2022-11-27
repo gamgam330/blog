@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
+
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+
+    <base href="https://gamgam330.github.io/">
+    <title> gamgam&#39;s blog </title>
+    <meta name="description" content="gamgam&#39;s blog">
+
+    <link rel="canonical" href="https://gamgam330.github.io/tags/Algorithm/">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+
+    
+    <link rel="stylesheet" href="https://gamgam330.github.io/sass/main.min.8d58f9ab31818c91abecff2fde5e87e083101edf00fb76a93740014a66d8e666.css">
+
+    <link rel="shortcut icon" href="https://gamgam330.github.io/img/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+    <script>
+        $(function () {
+            $(".cat1>li").click(function () {
+                $(this).siblings().find('ul').slideUp(300);
+                $(this).find('ul').slideToggle(300);
+            })
+
+            $(window).scroll(function () {
+                activeBg();
+            });
+
+            activeBg();
+
+
+            $('.h-menu').click(function (e) {
+                e.preventDefault();
+                $('.side').addClass('on');
+            });
+
+            $('.close').click(function (e) {
+                e.preventDefault();
+                $('.side').removeClass('on');
+            });
+
+            $('ul.slide>li').click(function () {
+                if ($(this).find('.down').hasClass('on')) {
+                    $(this).find('.down').removeClass('on');
+                    $(this).find('.down').prev().stop().slideUp(500);
+                } else {
+                    $(this).find('.down').addClass('on');
+                    $(this).find('.down').prev().stop().slideDown(500);
+                }
+            })
+        })
+
+        function activeBg() {
+            if ($(window).scrollTop() > 0) {
+                $('.site-header').addClass('on');
+            } else {
+                $('.site-header').removeClass('on');
+            }
+        }
+    </script>
+</head>
+<header class="site-header">
+    <h1 class="web-t" onclick="window.location.href='/'"><span>public static</span><em> 천방지축 얼렁뚱땅
+        </em><span>(</span><i>🤣</i><span>)</span>:<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="nbsp">title =</span> 빙글빙글 돌아가는 구만이의 개발일지
+        <br />
+    </h1>
+
+    <h1 class="mob-t" onclick="window.location.href='/'">
+        <span>천/얼/빙/돌(</span><i>🤣</i><span>)</span>
+        <br />구만이의 개발일지
+    </h1>
+
+    <nav>
+        <div class="h-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="side">
+            <div class="close">
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="slide">
+                <li class="on"><a href="#">All Post</a>
+                </li>
+                <li><a>Study</a>
+                    <ul>
+                        <li><a href="https://gamgam330.github.io//study/baekjoon">Baekjoon</a></li>
+                    </ul>
+                    <span class="down"></span>
+                </li>
+                <hr />
+                <li><a href="https://gamgam330.github.io//about">About</a></li>
+                <li><a href="https://gamgam330.github.io//archive">Archive</a></li>
+                <li><a href="https://gamgam330.github.io//tags">Tag</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+<body>
+    <div class="content">
+        
+        
+<div class="home">
+    <div class="posts">
+        <nav>
+    <h2>Menu</h2>
+    <ul class="slide">
+        <li class="on"><a href="/">All Post</a>
+        </li>
+        <li><a>Study</a>
+            <ul>
+                <li><a href="https://gamgam330.github.io//study/baekjoon">Baekjoon</a></li>
+            </ul>
+            <span class="down"></span>
+        </li>
+	<hr />
+	        <li><a href="https://gamgam330.github.io//about">About</a></li>
+        <li><a href="https://gamgam330.github.io//archive">Archive</a></li>
+        <li><a href="https://gamgam330.github.io//tags">Tag</a></li>
+    </ul>
+</nav>
+
+
+        <div>
+            <h3> Algorithm <span>3</span></h3>
+            <ul class="post-box">
+                
+                <li class="post-teaser">
+                    <a href="https://gamgam330.github.io/study/baekjoon/2022/11/13/boj1647.html/">
+                        <div>
+                            <h4>BOJ 1647</h4>
+                            <div class="post-info">
+                                <p class="meta">
+                                    2022-11-13
+                                </p>
+                                <div class="excerpt">
+                                    <p>백준 1647문제를 풀기 위해선 <code>크루스칼 알고리즘</code> / <code>union-find 알고리즘</code> / <code>BFS</code>, <code>DFS</code> 알고리즘에 대해 알아야 한다</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="post-teaser">
+                    <a href="https://gamgam330.github.io/study/baekjoon/2022/11/04/boj1916.html/">
+                        <div>
+                            <h4>BOJ 1916</h4>
+                            <div class="post-info">
+                                <p class="meta">
+                                    2022-11-04
+                                </p>
+                                <div class="excerpt">
+                                    <p>백준 1916번 문제는 다익스트라 문제로 <code>너비우선탐색</code> 과 <code>우선순위 큐</code> 개념을 알지못한다면 이 두가지 개념을 먼저 정리하고 오는것을 추천한다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                
+                <li class="post-teaser">
+                    <a href="https://gamgam330.github.io/study/baekjoon/2022/10/15/boj24445.html/">
+                        <div>
+                            <h4>백준 24445 BFS</h4>
+                            <div class="post-info">
+                                <p class="meta">
+                                    2022-10-15
+                                </p>
+                                <div class="excerpt">
+                                    <p>24445번 문제에 주의사항은 <code>내림차순</code>인것같다. 나는 내림차순을 생각하지 않고 풀다가 한번 틀렸다.<br>
+BFS에서 중요한 개념은 <code>큐</code>와 <code>그래프</code>이다.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+
+</div>
+
+    </div>
+    <ul class='social'>
+    
+    <li>
+        <a href="https://github.com/gamgam330" class="icon alt" target="_blank">
+            <i class="fa fa-github fa-2x"></i>
+        </a>
+    </li>
+    
+</ul>
+<footer class="site-footer">
+    <p ckass="text">Powered by <a href="https://mingzz1.github.io" target="_blank">mingzzi</a> with <a
+            href="https://skye3133.github.io/" target="_blank">myund</a> and <a href="https://gamgam330.github.io/" target="_blank">90000e</a></p>
+</footer>
+
+
+    
+</body>
+</body>
+
+</html>

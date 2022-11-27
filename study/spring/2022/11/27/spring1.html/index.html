@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
+    rel="stylesheet">
+
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+
+    <base href="https://gamgam330.github.io/">
+    <title> gamgam&#39;s blog </title>
+    <meta name="description" content="gamgam&#39;s blog">
+
+    <link rel="canonical" href="https://gamgam330.github.io/study/spring/2022/11/27/spring1.html/">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+
+    
+    <link rel="stylesheet" href="https://gamgam330.github.io/sass/main.min.8d58f9ab31818c91abecff2fde5e87e083101edf00fb76a93740014a66d8e666.css">
+
+    <link rel="shortcut icon" href="https://gamgam330.github.io/img/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" type="text/css"
+        href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+
+    <script>
+        $(function () {
+            $(".cat1>li").click(function () {
+                $(this).siblings().find('ul').slideUp(300);
+                $(this).find('ul').slideToggle(300);
+            })
+
+            $(window).scroll(function () {
+                activeBg();
+            });
+
+            activeBg();
+
+
+            $('.h-menu').click(function (e) {
+                e.preventDefault();
+                $('.side').addClass('on');
+            });
+
+            $('.close').click(function (e) {
+                e.preventDefault();
+                $('.side').removeClass('on');
+            });
+
+            $('ul.slide>li').click(function () {
+                if ($(this).find('.down').hasClass('on')) {
+                    $(this).find('.down').removeClass('on');
+                    $(this).find('.down').prev().stop().slideUp(500);
+                } else {
+                    $(this).find('.down').addClass('on');
+                    $(this).find('.down').prev().stop().slideDown(500);
+                }
+            })
+        })
+
+        function activeBg() {
+            if ($(window).scrollTop() > 0) {
+                $('.site-header').addClass('on');
+            } else {
+                $('.site-header').removeClass('on');
+            }
+        }
+    </script>
+</head>
+<header class="site-header">
+    <h1 class="web-t" onclick="window.location.href='/'"><span>public static</span><em> 천방지축 얼렁뚱땅
+        </em><span>(</span><i>🤣</i><span>)</span>:<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="nbsp">title =</span> 빙글빙글 돌아가는 구만이의 개발일지
+        <br />
+    </h1>
+
+    <h1 class="mob-t" onclick="window.location.href='/'">
+        <span>천/얼/빙/돌(</span><i>🤣</i><span>)</span>
+        <br />구만이의 개발일지
+    </h1>
+
+    <nav>
+        <div class="h-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="side">
+            <div class="close">
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="slide">
+                <li class="on"><a href="#">All Post</a>
+                </li>
+                <li><a>Study</a>
+                    <ul>
+                        <li><a href="https://gamgam330.github.io//study/baekjoon">Baekjoon</a></li>
+                    </ul>
+                    <span class="down"></span>
+                </li>
+                <hr />
+                <li><a href="https://gamgam330.github.io//about">About</a></li>
+                <li><a href="https://gamgam330.github.io//archive">Archive</a></li>
+                <li><a href="https://gamgam330.github.io//tags">Tag</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+<body>
+    <div class="content">
+        
+        
+
+<article>
+    <header>
+        <h1 class="title">Spring 객체지향과 SOLID</h1>
+        <p class="meta">
+            2022-11-27
+        </p>
+    </header>
+    <section class="post-content"><p>자바를 기반으로한 spring 프레임워크는 <code>객체지향이라</code>는 가장 큰 장점을 가지고 있다.</p>
+<p>객체지향의 특징인 다형성을 가장 중요하게 생각한다. 다형성을 가진 spring은 <code>유연하고 변경에 용이</code>하다는 장점을 가지고 있다.</p>
+<p>예를 들어 살펴보겠다.</p>
+<p>ex) 운전면허가 있는 내가, 메르세데스 벤츠 E클래스를 운전하다가 제네시스 X 컨버터블로 차를 바꿧다. 이때 나는 운전을 처음부터 다시 배워야 하는가?</p>
+<p>라는 질문을 봤을때의 답은 <code>아니요.</code> 일것이다. 이것처럼 차가 바뀐다고 내가 다시 운전을 배우고 운전면허증을 따야하는것은 아니다. 이렇게 모든 기능들을 인터페이스로 개발해 부품만 갈아끼우는 방식으로 개발 할 수 있는것이 spring의 가장 큰 장점이다.</p>
+<p>SOLID 5원칙에 대해 살펴보겠다.</p>
+<ol>
+<li>SRP : 단일 책임 원칙</li>
+<li>OCP : 개방 폐쇄 원칙</li>
+<li>LSP : 리스코프 치환 원칙</li>
+<li>ISP : 인터페이스 분리 원칙</li>
+<li>DIP : 의존관계 역전 원칙</li>
+</ol>
+<p>SPR
+SPR은 <code>단일 책임 원칙</code>으로 한 클래스는 하나의 책임만 가져야 한다. 라는 특징을 가지고있다. 수정시에 하나의 클래스만을 수정할 수 있도록 설계해야 한다는 의미이다.</p>
+<p>OCP
+SOLID의 5원칙 중 중요한 개념에 해당한다. 이는 소프트웨어 요소는 확장에는 열려있으나, 변경에는 닫혀 있어야 한다. 라는 의미를 가지고 있다. 기존 코드에 대한 변경은 없어야 하고 새로운 블록을 갈아 끼워야 한다는 소리이다.</p>
+<p>하지만, 구현객체에 대한 변경이 있다.
+ex) <code>Memorymember member = new memoryMemberrepository();</code> 와 <code>Memorymember member = new JDBCMemberrepository();</code> 처럼 기능에 따라 구현객체의 수정이 일어난다. 이에 대한 해결책으로는 연관관계를 맺어주는 별도의 조립이나 설정자가 필요하다.</p>
+<p>LSP
+프로그램의 객체는 프로그램의 정확성을 깨뜨리지 않으면서 하위타입의 인스턴스로 바꿀 수 있어야 한다. 즉, 자동차라는 객체를 봤을때, 악셀은 앞으로 가야한다 라는 약속을 깨면 안된다는 것이다. 컴파일이 성공해도 악셀을 밟았을때 뒤로가면 이것은 LSP원칙을 위반한 것이된다.</p>
+<p>ISP
+특정 클라이언트를 위한 인터페이스 여러개가 범용 인터페이스 하나보다 낫다. 즉, 자동차 인터페이스에서 운전과 정비로 나누면 운전자, 정비사 클라이언트로 분기가 가능하고 이는 즉 정비관련 문제는 정비사 인터페이스에서만 수정을 하면 된다는 소리이다.</p>
+<p>DIP
+이역시 SOLID 5원칙 중 중요한 개념에 해당한다. 의존성 주입은 이 원칙을 따라는 방법 중 하나이다. 즉, 구연코드가 클라이언트 말고 인터페이스를 바라봐야 한다. 즉 장동건이 김태희랑만 극중 역할을 연습했다고, 송혜교와는 촬영하지 못하면 안된다는 것이다. 그 극중의 역할만을 생각해야 한다는 것이다.</p>
+<p>이렇게 다형성이라는 장점만으로는 <code>OCP</code>,<code>DIP</code>의 위반을 막지 못한다.</p>
+<p>기본적으로 인터페이스와 구현체를 가진 코드를 살펴보겠다.</p>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#ff79c6">package</span> hello.core.order<span style="color:#ff79c6">;</span>
+
+<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">interface</span> <span style="color:#50fa7b">OrderSerice</span> <span style="color:#ff79c6">{</span>
+    Order <span style="color:#50fa7b">createOrder</span><span style="color:#ff79c6">(</span>Long memberId<span style="color:#ff79c6">,</span> String itemName<span style="color:#ff79c6">,</span> <span style="color:#8be9fd">int</span> itemPrice<span style="color:#ff79c6">);</span>
+
+<span style="color:#ff79c6">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#ff79c6">package</span> hello.core.order<span style="color:#ff79c6">;</span>
+
+<span style="color:#ff79c6">import</span> hello.core.discount.DiscountPolicy<span style="color:#ff79c6">;</span>
+<span style="color:#ff79c6">import</span> hello.core.discount.FixDiscountPolicy<span style="color:#ff79c6">;</span>
+<span style="color:#ff79c6">import</span> hello.core.member.Member<span style="color:#ff79c6">;</span>
+<span style="color:#ff79c6">import</span> hello.core.member.MemberRepository<span style="color:#ff79c6">;</span>
+<span style="color:#ff79c6">import</span> hello.core.member.MemoryMemberRepository<span style="color:#ff79c6">;</span>
+
+<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">OrderServiceImpl</span> <span style="color:#8be9fd;font-style:italic">implements</span> OrderSerice<span style="color:#ff79c6">{</span>
+
+    <span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">final</span> MemberRepository memberRepository <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> MemoryMemberRepository<span style="color:#ff79c6">();</span>
+    <span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd;font-style:italic">final</span> DiscountPolicy discountPolicy <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">new</span> FixDiscountPolicy<span style="color:#ff79c6">();</span>
+
+    @Override
+    <span style="color:#8be9fd;font-style:italic">public</span> Order <span style="color:#50fa7b">createOrder</span><span style="color:#ff79c6">(</span>Long memberId<span style="color:#ff79c6">,</span> String itemName<span style="color:#ff79c6">,</span> <span style="color:#8be9fd">int</span> itemPrice<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+        Member member <span style="color:#ff79c6">=</span> memberRepository<span style="color:#ff79c6">.</span><span style="color:#50fa7b">findById</span><span style="color:#ff79c6">(</span>memberId<span style="color:#ff79c6">);</span>
+        <span style="color:#8be9fd">int</span> discountPrice <span style="color:#ff79c6">=</span> discountPolicy<span style="color:#ff79c6">.</span><span style="color:#50fa7b">discount</span><span style="color:#ff79c6">(</span>member<span style="color:#ff79c6">,</span> itemPrice<span style="color:#ff79c6">);</span>
+
+        <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">new</span> Order<span style="color:#ff79c6">(</span>memberId<span style="color:#ff79c6">,</span> itemName<span style="color:#ff79c6">,</span> itemPrice<span style="color:#ff79c6">,</span> discountPrice<span style="color:#ff79c6">);</span>
+    <span style="color:#ff79c6">}</span>
+<span style="color:#ff79c6">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#ff79c6">package</span> hello.core.discount<span style="color:#ff79c6">;</span>
+
+<span style="color:#ff79c6">import</span> hello.core.member.Member<span style="color:#ff79c6">;</span>
+
+<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">interface</span> <span style="color:#50fa7b">DiscountPolicy</span> <span style="color:#ff79c6">{</span>
+    <span style="color:#6272a4">/**
+</span><span style="color:#6272a4">     * @return 할인 대상 금액
+</span><span style="color:#6272a4">     */</span>
+    <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">discount</span><span style="color:#ff79c6">(</span>Member member<span style="color:#ff79c6">,</span> <span style="color:#8be9fd">int</span> price<span style="color:#ff79c6">);</span>
+<span style="color:#ff79c6">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#ff79c6">package</span> hello.core.discount<span style="color:#ff79c6">;</span>
+
+<span style="color:#ff79c6">import</span> hello.core.member.Grade<span style="color:#ff79c6">;</span>
+<span style="color:#ff79c6">import</span> hello.core.member.Member<span style="color:#ff79c6">;</span>
+
+<span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd;font-style:italic">class</span> <span style="color:#50fa7b">FixDiscountPolicy</span> <span style="color:#8be9fd;font-style:italic">implements</span> DiscountPolicy<span style="color:#ff79c6">{</span>
+    <span style="color:#8be9fd;font-style:italic">private</span> <span style="color:#8be9fd">int</span> discountFixAmount <span style="color:#ff79c6">=</span> 1000<span style="color:#ff79c6">;</span>
+
+    @Override
+    <span style="color:#8be9fd;font-style:italic">public</span> <span style="color:#8be9fd">int</span> <span style="color:#50fa7b">discount</span><span style="color:#ff79c6">(</span>Member member<span style="color:#ff79c6">,</span> <span style="color:#8be9fd">int</span> price<span style="color:#ff79c6">)</span> <span style="color:#ff79c6">{</span>
+        <span style="color:#ff79c6">if</span><span style="color:#ff79c6">(</span>member<span style="color:#ff79c6">.</span><span style="color:#50fa7b">getGrade</span><span style="color:#ff79c6">()</span> <span style="color:#ff79c6">==</span> Grade<span style="color:#ff79c6">.</span><span style="color:#50fa7b">VIP</span><span style="color:#ff79c6">){</span>
+            <span style="color:#ff79c6">return</span> discountFixAmount<span style="color:#ff79c6">;</span>
+        <span style="color:#ff79c6">}</span><span style="color:#ff79c6">else</span> <span style="color:#ff79c6">{</span>
+            <span style="color:#ff79c6">return</span> 0<span style="color:#ff79c6">;</span>
+        <span style="color:#ff79c6">}</span>
+    <span style="color:#ff79c6">}</span>
+<span style="color:#ff79c6">}</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>인터페이스를 이용해 조립하는 다형성을 잘 활용하긴 했지만, OCP와 DIP에 대한 위반을 처리하진 못한다. 이방법은 차차 알아보도록 하겠다.</p></section>
+    <footer>
+    <div class="tags">
+        
+        <a href="https://gamgam330.github.io//tags#Back-end">#Back-end</a>
+        
+        <a href="https://gamgam330.github.io//tags#Spring">#Spring</a>
+        
+    </div>
+</footer>
+</article>
+
+<div class="comments">
+ 
+</div>
+
+<div id="post-nav">
+    <div id="previous-post" class="post-nav-post">
+        
+        <p>Previous post</p>
+        <a href="https://gamgam330.github.io/study/baekjoon/2022/11/13/boj1647.html/">BOJ 1647</a>
+        
+    </div>
+
+    <div id="next-post" class="post-nav-post">
+        
+    </div>
+</div>
+
+
+    </div>
+    <ul class='social'>
+    
+    <li>
+        <a href="https://github.com/gamgam330" class="icon alt" target="_blank">
+            <i class="fa fa-github fa-2x"></i>
+        </a>
+    </li>
+    
+</ul>
+<footer class="site-footer">
+    <p ckass="text">Powered by <a href="https://mingzz1.github.io" target="_blank">mingzzi</a> with <a
+            href="https://skye3133.github.io/" target="_blank">myund</a> and <a href="https://gamgam330.github.io/" target="_blank">90000e</a></p>
+</footer>
+
+
+    
+</body>
+</body>
+
+</html>
