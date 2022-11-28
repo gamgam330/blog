@@ -1,3 +1,3 @@
 ---
-title: "Study"
+title: "Study/Spring"
 ---
