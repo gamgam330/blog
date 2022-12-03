@@ -1,6 +1,6 @@
 ---
 title: "mergeSort"
-date: 2022-12-3
+date: 2022-12-03
 draft: false
 category: [study]
 subcategories: [Algorithm]
