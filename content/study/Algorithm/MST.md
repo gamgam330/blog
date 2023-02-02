@@ -46,9 +46,9 @@ public static void union(int a, int b) {
 
 이 그림과 동일하게 만약 1,2 / 2,3 / 3,1 정점들이 순서대로 union이 일어나게 되면, 사이클이 생기게 될것이다. 하지만 1,2 / 2,3 정점이 union되면서 1,2,3번 정점은 모두 부모를 1로 가지게 되었고, 3,1이 union이 일어나게 되면 이미 같은 부모를 가지고 있기때문에 union이 일어나지 않게 설정하면 사이클이 생기지 않는다.
 
+![](/images/study/Algorithms/MST/4.jpg)
 ![](/images/study/Algorithms/MST/5.jpg)
 ![](/images/study/Algorithms/MST/6.jpg)
-![](/images/study/Algorithms/MST/7.jpg)
 
 ```java
 import java.io.BufferedReader;
@@ -125,13 +125,13 @@ public class Main {
 
 C언어로 작성한 코드가 사라져 백준 1647 크루스칼 문제를 대체해서 올려놓도록 하겠다..........
 
-1. 프림 알고리즘
+2. 프림 알고리즘
 
 프림 알고리즘은 집합 S를 공집합에서 시작하여 모든 정점을 포함할 때까지 키워나간다. 맨 처음 정점을 제외하고는 정점을 하나 더할 때마다 간선이 하나씩 확정된다. 크루스칼알고리즘과 다르게 현재 연결된 정점들의 간선들 중 가중치가 가장 작은 간선을 선택해 뻗어나아가는 형태이다. 먼저 그림을 통해 살펴보겠다
 
+![](/images/study/Algorithms/MST/7.jpg)
 ![](/images/study/Algorithms/MST/8.jpg)
 ![](/images/study/Algorithms/MST/9.jpg)
-![](/images/study/Algorithms/MST/10.jpg)
 
 이렇게 현재 연결된 정점들의 간선들 중 가중치가 가장 작은 간선을 채택해 뻗어나가게 된다. 
 
@@ -203,4 +203,3 @@ int primMat(GraphType1* g, int s, int n, int* visited, int* dist) {
 }
 ```
 
-같은 그래프를 크루스칼과 프림 알고리즘으로 그렸을때 같은 MST가 나오게된다. 이렇게 그리디 알고리즘의 최적해를 보장하는 알고리즘이라고 할 수 있다.
